@@ -2,16 +2,15 @@
 
 curl="/usr/bin/curl"
 args="-XDELETE"
-requestprefix="http://10.41.68.17:9200/recommendation_reporting/type/"
+requestprefix="http://localhost:9200/index/type/"
 
 
 while read -r line
 do
 	id="$line"
-	echo "Executing curl for : $id"
 	request=$requestprefix$id
-	echo "$request"
-	$curl $args $request >> /home/bhaskar/Documents/result_for_curl_deletes
+	echo "Executing curl for : [$request]"
+	$curl $args $request >> /home/bhaskar/Documents/output
 done < "input_ids"
 
 
